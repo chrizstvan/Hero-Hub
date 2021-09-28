@@ -10,12 +10,18 @@ import Foundation
 protocol IHeroListInteractor {
     func fetchHeroList()
     func getHeroes() -> [Hero]
+    func getHeroesViewModel() -> [HeroList.ViewModel]
+    func getHeroesRole() -> [String]
+    func getHeroesByRole(role: String)
+    func prepareToNavigate(hero: Hero)
 }
 
 class HeroListInteractor: IHeroListInteractor {
     private let service: IHeroService
     private let presenter: IHeroListPresenter
     private var heroes: [Hero] = []
+    private var heroByRoles: [String: [Hero]] = [:]
+    private var filtredHeroes: [Hero] = []
     
     init(presenter: IHeroListPresenter, service: IHeroService) {
         self.presenter = presenter
@@ -27,6 +33,7 @@ class HeroListInteractor: IHeroListInteractor {
             switch result {
             case .success(let response):
                 self?.heroes = response
+                self?.setHeroByRolesDictionary()
                 self?.presenter.presentSuccessGetHeroes()
             case .failure(let error):
                 debugPrint("Failed fetch hero: \(error)")
@@ -36,7 +43,59 @@ class HeroListInteractor: IHeroListInteractor {
     }
     
     func getHeroes() -> [Hero] {
-        self.heroes
+        filtredHeroes.isEmpty ? self.heroes : filtredHeroes
+    }
+    
+    func getHeroesViewModel() -> [HeroList.ViewModel] {
+        let currentHeroes = filtredHeroes.isEmpty ? self.heroes : filtredHeroes
+        let viewModels = currentHeroes.map { HeroList.ViewModel.init(hero: $0) }
+        return viewModels
+    }
+    
+    func getHeroesRole() -> [String] {
+        var allRoles = [String]()
+        self.heroes.forEach { allRoles.append(contentsOf: $0.roles) }
+        allRoles = allRoles.uniqued()
+        if !heroes.isEmpty { allRoles.insert("All", at: 0) }
+        return allRoles
+    }
+    
+    func getHeroesByRole(role: String) {
+        self.filtredHeroes = heroByRoles[role] ?? self.heroes
+        presenter.presentSuccessGetHeroes()
+    }
+    
+    func prepareToNavigate(hero: Hero) {
+        let primaryAtt = hero.primaryAttr
+        var heroes = self.heroes.filter {$0.id != hero.id }
+        switch primaryAtt {
+        case "agi":
+            heroes = heroes.sorted { $0.moveSpeed > $1.moveSpeed }
+        case "str":
+            heroes = heroes.sorted { $0.baseAttackMax > $1.baseAttackMax }
+        case "int":
+            heroes = heroes.sorted { $0.baseMana > $1.baseMana }
+        default:
+            break
+        }
+        
+        let similarHeroes = Array(heroes.prefix(3))
+        presenter.prepareToNavigateFinished(hero: hero, similarHeroes: similarHeroes)
+    }
+
+    // MARK: Helper Function
+    
+    private func setHeroByRolesDictionary() {
+        let roles = getHeroesRole()
+        for role in roles {
+            self.heroByRoles[role] = filterHeroesByRoles(role)
+        }
+    }
+    
+    private func filterHeroesByRoles(_ role: String) -> [Hero] {
+        guard role != "All" else { return self.heroes }
+        let filteredHeroes = self.heroes.filter { $0.roles.contains(role) }
+        return filteredHeroes
     }
 }
 

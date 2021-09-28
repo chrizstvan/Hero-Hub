@@ -9,6 +9,7 @@ import Foundation
 
 protocol IHeroListPresenter {
     func presentSuccessGetHeroes()
+    func prepareToNavigateFinished(hero: Hero, similarHeroes: [Hero])
 }
 
 class HeroListPresenter: IHeroListPresenter {
@@ -20,5 +21,9 @@ class HeroListPresenter: IHeroListPresenter {
     
     func presentSuccessGetHeroes() {
         view?.displaySuccessGetHeroes()
+    }
+    
+    func prepareToNavigateFinished(hero: Hero, similarHeroes: [Hero]) {
+        view?.navigateToDetail(hero: hero, similarHeroes: similarHeroes)
     }
 }
