@@ -2,7 +2,7 @@
 //  Hero_HubUITests.swift
 //  Hero HubUITests
 //
-//  Created by Ronny on 27/09/21.
+//  Created by Chris on 27/09/21.
 //
 
 import XCTest

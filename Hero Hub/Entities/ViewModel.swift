@@ -31,11 +31,25 @@ enum HeroDetail {
         let name: String?
         let primaryAttr: String?
         var image: String?
+        var icon: String?
+        let roles: String?
+        let baseAttack: String?
+        let baseArmor: String?
+        let moveSpeed: String?
+        let baseHealth: String?
+        let baseMana: String?
     
         init(hero: Hero) {
             self.name = hero.localizedName
             self.primaryAttr = hero.primaryAttr
             self.image = hero.img.imageURLFormat
+            self.icon = hero.icon.imageURLFormat
+            self.roles = hero.roles.joined(separator: " • ")
+            self.baseAttack = "\(hero.baseAttackMin) - \(hero.baseAttackMax)"
+            self.baseArmor = "\(hero.baseArmor)"
+            self.moveSpeed = "\(hero.moveSpeed)"
+            self.baseHealth = "\(hero.baseHealth)"
+            self.baseMana = "\(hero.baseMana)"
         }
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 protocol IHeroViewController: AnyObject {
     func displaySuccessGetHeroes()
-    func displayErrorGetHeroes()
+    func displayErrorGetHeroes(errorStr: String)
     func navigateToDetail(hero: Hero, similarHeroes: [Hero])
 }
 
@@ -17,6 +17,7 @@ class HeroListViewController: UIViewController {
     
     private var interactor: IHeroListInteractor?
     private let screenSize = UIScreen.main.bounds
+    private var selectedRole = "All"
     
     @IBOutlet weak var categoryTabs: UICollectionView!
     @IBOutlet weak var heroesCollection: UICollectionView!
@@ -30,7 +31,7 @@ class HeroListViewController: UIViewController {
 
     private func setup() {
         let presenter = HeroListPresenter(view: self)
-        interactor = HeroListInteractor(presenter: presenter, service: HeroListService())
+        interactor = HeroListInteractor(presenter: presenter, service: HeroListService(), localDB: LocalDBWorker())
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Heroes"
@@ -73,7 +74,9 @@ extension HeroListViewController: UICollectionViewDataSource, UICollectionViewDe
                   let roles = interactor?.getHeroesRole() else {
                 return UICollectionViewCell()
             }
-            cell.roleLabel.text = roles[indexPath.item]
+            let role = roles[indexPath.item]
+            cell.roleLabel.text = role
+            cell.isSelected = selectedRole.contains(role) ? true : false
             return cell
         case heroesCollection:
             guard let cell = heroesCollection.dequeueReusableCell(withReuseIdentifier: HeroCell.identifier, for: indexPath) as? HeroCell else {
@@ -93,8 +96,8 @@ extension HeroListViewController: UICollectionViewDataSource, UICollectionViewDe
         case categoryTabs:
             return CGSize(width: 150, height: 56)
         case heroesCollection:
-            let cardW = CGFloat((screenSize.width / 2) - 32)
-            let cardH = CGFloat(cardW * 1.5)
+            let cardW = CGFloat((screenSize.width / 2) - 16)
+            let cardH = CGFloat(cardW * 0.8)
             return CGSize(width: cardW, height: cardH)
         default:
             return CGSize()
@@ -109,10 +112,10 @@ extension HeroListViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        #warning("TODO: bikin router")
         switch collectionView {
         case categoryTabs:
             guard let role = interactor?.getHeroesRole()[indexPath.item] else { return }
+            selectedRole = role
             interactor?.getHeroesByRole(role: role)
         case heroesCollection:
             guard let hero = interactor?.getHeroes()[indexPath.item] else { return }
@@ -120,7 +123,6 @@ extension HeroListViewController: UICollectionViewDataSource, UICollectionViewDe
         default:
             break
         }
-        
     }
 }
 
@@ -132,8 +134,12 @@ extension HeroListViewController: IHeroViewController {
         }
     }
     
-    func displayErrorGetHeroes() {
-        #warning("Display loading")
+    func displayErrorGetHeroes(errorStr: String) {
+        DispatchQueue.main.async { [weak self] in
+            let alert = UIAlertController(title: "Error", message: errorStr, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self?.present(alert, animated: true)
+        }
     }
     
     func navigateToDetail(hero: Hero, similarHeroes: [Hero]) {

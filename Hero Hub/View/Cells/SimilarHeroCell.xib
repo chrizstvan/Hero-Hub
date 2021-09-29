@@ -9,31 +9,42 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="SimilarHeroCell" customModule="Hero_Hub" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="83" id="KGk-i7-Jjw" customClass="SimilarHeroCell" customModule="Hero_Hub" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="83"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="83"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWZ-y3-ltg">
-                        <rect key="frame" x="16" y="12" width="42" height="21"/>
+                        <rect key="frame" x="76" y="28" width="228" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6bZ-aB-21j">
+                        <rect key="frame" x="16" y="16" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="PRY-cD-CkB"/>
+                            <constraint firstAttribute="width" secondItem="6bZ-aB-21j" secondAttribute="height" multiplier="1:1" id="oao-6a-RD3"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="sWZ-y3-ltg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="1st-Fv-eVt"/>
-                    <constraint firstAttribute="bottom" secondItem="sWZ-y3-ltg" secondAttribute="bottom" constant="11" id="qxC-fK-Poz"/>
-                    <constraint firstItem="sWZ-y3-ltg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="rw2-F3-nj4"/>
+                    <constraint firstItem="6bZ-aB-21j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="D1J-VY-1zp"/>
+                    <constraint firstItem="sWZ-y3-ltg" firstAttribute="leading" secondItem="6bZ-aB-21j" secondAttribute="trailing" constant="16" id="Ou6-mH-W1a"/>
+                    <constraint firstItem="6bZ-aB-21j" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="crf-F5-N2j"/>
+                    <constraint firstAttribute="trailing" secondItem="sWZ-y3-ltg" secondAttribute="trailing" constant="16" id="m8j-GL-tTd"/>
+                    <constraint firstAttribute="bottom" secondItem="6bZ-aB-21j" secondAttribute="bottom" constant="16" id="ovc-yK-Gi5"/>
+                    <constraint firstItem="sWZ-y3-ltg" firstAttribute="centerY" secondItem="6bZ-aB-21j" secondAttribute="centerY" id="wpW-SQ-D2S"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="heroeImageView" destination="6bZ-aB-21j" id="D3F-Kv-Tvs"/>
                 <outlet property="nameLabel" destination="sWZ-y3-ltg" id="mS6-s7-vcO"/>
             </connections>
-            <point key="canvasLocation" x="128.98550724637681" y="72.991071428571431"/>
+            <point key="canvasLocation" x="128.98550724637681" y="86.049107142857139"/>
         </tableViewCell>
     </objects>
 </document>

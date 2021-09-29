@@ -11,43 +11,54 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RolesCell" customModule="Hero_Hub" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="215" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="215" height="68"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="215" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="215" height="68"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSz-zu-AVp">
-                        <rect key="frame" x="16" y="16" width="183" height="4"/>
+                        <rect key="frame" x="16" y="18" width="183" height="32"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vg9-hu-zBL">
-                        <rect key="frame" x="0.0" y="36" width="215" height="8"/>
+                        <rect key="frame" x="0.0" y="66" width="215" height="2"/>
                         <color key="backgroundColor" systemColor="systemRedColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="8" id="DmD-yR-xti"/>
+                            <constraint firstAttribute="height" constant="2" id="aRZ-02-Il0"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLE-6g-CsV">
+                        <rect key="frame" x="0.0" y="0.0" width="215" height="2"/>
+                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2" id="QCi-8X-ssy"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="vg9-hu-zBL" firstAttribute="top" secondItem="QSz-zu-AVp" secondAttribute="bottom" constant="16" id="IWi-EP-nvC"/>
-                <constraint firstAttribute="trailing" secondItem="vg9-hu-zBL" secondAttribute="trailing" id="SVX-4g-gAI"/>
-                <constraint firstAttribute="trailing" secondItem="QSz-zu-AVp" secondAttribute="trailing" constant="16" id="bhL-Vt-ycN"/>
-                <constraint firstAttribute="bottom" secondItem="vg9-hu-zBL" secondAttribute="bottom" id="hva-v5-XeM"/>
-                <constraint firstItem="QSz-zu-AVp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="iNf-9Z-ztJ"/>
-                <constraint firstItem="vg9-hu-zBL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="kE6-Hh-ETG"/>
-                <constraint firstItem="QSz-zu-AVp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="ubL-4z-3Ac"/>
+                <constraint firstItem="vg9-hu-zBL" firstAttribute="top" secondItem="QSz-zu-AVp" secondAttribute="bottom" constant="16" id="1pJ-ri-VSW"/>
+                <constraint firstItem="vg9-hu-zBL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="206-gZ-US3"/>
+                <constraint firstAttribute="bottom" secondItem="vg9-hu-zBL" secondAttribute="bottom" id="2dL-wa-DM8"/>
+                <constraint firstItem="hLE-6g-CsV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4VD-xc-nBr"/>
+                <constraint firstItem="hLE-6g-CsV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="BfR-XC-YSD"/>
+                <constraint firstAttribute="trailing" secondItem="vg9-hu-zBL" secondAttribute="trailing" id="MUu-RA-l7F"/>
+                <constraint firstAttribute="trailing" secondItem="QSz-zu-AVp" secondAttribute="trailing" constant="16" id="R78-9T-Bxa"/>
+                <constraint firstAttribute="trailing" secondItem="hLE-6g-CsV" secondAttribute="trailing" id="cvF-yd-Mjo"/>
+                <constraint firstItem="QSz-zu-AVp" firstAttribute="top" secondItem="hLE-6g-CsV" secondAttribute="bottom" constant="16" id="eFP-f5-lns"/>
+                <constraint firstItem="QSz-zu-AVp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="uD2-zb-58Z"/>
             </constraints>
-            <size key="customSize" width="215" height="57"/>
+            <size key="customSize" width="215" height="81"/>
             <connections>
                 <outlet property="highlightedView" destination="vg9-hu-zBL" id="GoN-fw-glb"/>
                 <outlet property="roleLabel" destination="QSz-zu-AVp" id="C54-uu-1bI"/>
+                <outlet property="topHighlightedView" destination="hLE-6g-CsV" id="Py6-P6-DDJ"/>
             </connections>
-            <point key="canvasLocation" x="248.55072463768118" y="75.334821428571431"/>
+            <point key="canvasLocation" x="248.55072463768118" y="83.035714285714278"/>
         </collectionViewCell>
     </objects>
     <resources>

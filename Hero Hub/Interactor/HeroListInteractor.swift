@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol IHeroListInteractor {
     func fetchHeroList()
@@ -19,16 +20,27 @@ protocol IHeroListInteractor {
 class HeroListInteractor: IHeroListInteractor {
     private let service: IHeroService
     private let presenter: IHeroListPresenter
+    private let localDB: LocalDBWorker
     private var heroes: [Hero] = []
     private var heroByRoles: [String: [Hero]] = [:]
     private var filtredHeroes: [Hero] = []
     
-    init(presenter: IHeroListPresenter, service: IHeroService) {
+    init(presenter: IHeroListPresenter, service: IHeroService, localDB: LocalDBWorker) {
         self.presenter = presenter
         self.service = service
+        self.localDB = localDB
     }
     
     func fetchHeroList() {
+        guard let realm = localDB.realm else { return }
+        if realm.isEmpty {
+            fetchFromRemote()
+        } else {
+            loadFromLocal()
+        }
+    }
+    
+    private func fetchFromRemote() {
         service.requestHeroList { [weak self] result in
             switch result {
             case .success(let response):
@@ -36,10 +48,10 @@ class HeroListInteractor: IHeroListInteractor {
                 self?.setHeroByRolesDictionary()
                 self?.presenter.presentSuccessGetHeroes()
             case .failure(let error):
-                debugPrint("Failed fetch hero: \(error)")
-                #warning("panggil presenter error view")
+                self?.presenter.presentFailedGetHeros(strError: error.localizedDescription)
             }
         }
+        saveToLocal(self.heroes)
     }
     
     func getHeroes() -> [Hero] {
@@ -99,3 +111,32 @@ class HeroListInteractor: IHeroListInteractor {
     }
 }
 
+// MARK: Realm
+extension HeroListInteractor {
+    private func saveToLocal(_ data: [Hero]) {
+        //print("REALM PATH: \(Realm.Configuration.defaultConfiguration.fileURL)")
+        guard let realm = localDB.realm else { return }
+        DispatchQueue.main.async {
+            for hero in data {
+                do {
+                    try realm.write {
+                        realm.add(hero, update: .modified)
+                    }
+                } catch(let error) {
+                    debugPrint("Error saving to local: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+    
+    private func loadFromLocal() {
+        guard let realm = localDB.realm else { return }
+        DispatchQueue.main.async { [weak self] in
+            self?.heroes = realm.objects(Hero.self).toArray(ofType: Hero.self) as [Hero]
+            self?.setHeroByRolesDictionary()
+            self?.presenter.presentSuccessGetHeroes()
+        }
+        
+        fetchFromRemote()
+    }
+}

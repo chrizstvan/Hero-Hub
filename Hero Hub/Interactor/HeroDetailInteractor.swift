@@ -9,7 +9,7 @@ import Foundation
 
 protocol IHeroDetailInteractor: AnyObject {
     func handleHeroDetail()
-    func getSimilarHeroes() -> [Hero]
+    func getSimilarHeroes() -> [HeroDetail.ViewModel]
 }
 
 class HeroDetailInteractor: IHeroDetailInteractor {
@@ -28,7 +28,8 @@ class HeroDetailInteractor: IHeroDetailInteractor {
         presenter?.presentHeroDetail(response: response)
     }
     
-    func getSimilarHeroes() -> [Hero] {
-        return similarHeroes
+    func getSimilarHeroes() -> [HeroDetail.ViewModel] {
+        let viewModels = similarHeroes.map { HeroDetail.ViewModel.init(hero: $0) }
+        return viewModels
     }
 }

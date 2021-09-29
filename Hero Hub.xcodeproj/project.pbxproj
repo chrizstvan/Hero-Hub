@@ -10,6 +10,8 @@
 		101736E6DCB3C2E2E354F98C /* Pods_Hero_Hub_Hero_HubUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7AAEB60232EBFA7F365D62 /* Pods_Hero_Hub_Hero_HubUITests.framework */; };
 		A35D81752F3D80C25511E43D /* Pods_Hero_Hub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1BA364A83DCCAAE588EC349 /* Pods_Hero_Hub.framework */; };
 		AE2C2FC870D981317C48A0F4 /* Pods_Hero_HubTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE37AE39155B2BE9BBB7F4A7 /* Pods_Hero_HubTests.framework */; };
+		E309AEEE2703EB76003B987E /* LocalDBWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309AEED2703EB76003B987E /* LocalDBWorker.swift */; };
+		E309AEF027045020003B987E /* HeroListInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309AEEF27045020003B987E /* HeroListInteractorTest.swift */; };
 		E3BBB29327015FD400E67B01 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BBB29227015FD400E67B01 /* Hero.swift */; };
 		E3BBB2962701708D00E67B01 /* BaseAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BBB2952701708D00E67B01 /* BaseAPIService.swift */; };
 		E3BBB2982701B28F00E67B01 /* HeroListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BBB2972701B28F00E67B01 /* HeroListService.swift */; };
@@ -63,6 +65,8 @@
 		C32C84AEBFAC8CF0821352D5 /* Pods-Hero HubTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hero HubTests.debug.xcconfig"; path = "Target Support Files/Pods-Hero HubTests/Pods-Hero HubTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB783FEE2E7CDD27F19D2BB3 /* Pods-Hero Hub-Hero HubUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hero Hub-Hero HubUITests.release.xcconfig"; path = "Target Support Files/Pods-Hero Hub-Hero HubUITests/Pods-Hero Hub-Hero HubUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E1BA364A83DCCAAE588EC349 /* Pods_Hero_Hub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hero_Hub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E309AEED2703EB76003B987E /* LocalDBWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDBWorker.swift; sourceTree = "<group>"; };
+		E309AEEF27045020003B987E /* HeroListInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListInteractorTest.swift; sourceTree = "<group>"; };
 		E3BBB29227015FD400E67B01 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		E3BBB2952701708D00E67B01 /* BaseAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPIService.swift; sourceTree = "<group>"; };
 		E3BBB2972701B28F00E67B01 /* HeroListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListService.swift; sourceTree = "<group>"; };
@@ -162,6 +166,7 @@
 			children = (
 				E3BBB2952701708D00E67B01 /* BaseAPIService.swift */,
 				E3BBB2972701B28F00E67B01 /* HeroListService.swift */,
+				E309AEED2703EB76003B987E /* LocalDBWorker.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 			children = (
 				E3DE13F8270154EA00743ECF /* Hero_HubTests.swift */,
 				E3DE13FA270154EA00743ECF /* Info.plist */,
+				E309AEEF27045020003B987E /* HeroListInteractorTest.swift */,
 			);
 			path = "Hero HubTests";
 			sourceTree = "<group>";
@@ -544,6 +550,7 @@
 				E3BBB2B72702BCBA00E67B01 /* HeroDetailPresenter.swift in Sources */,
 				E3BBB2B52702BB9200E67B01 /* HeroDetailInteractor.swift in Sources */,
 				E3BBB2A02701B47500E67B01 /* HeroListPresenter.swift in Sources */,
+				E309AEEE2703EB76003B987E /* LocalDBWorker.swift in Sources */,
 				E3BBB29327015FD400E67B01 /* Hero.swift in Sources */,
 				E3BBB2982701B28F00E67B01 /* HeroListService.swift in Sources */,
 				E3BBB2B22702A05600E67B01 /* HeroCell.swift in Sources */,
@@ -557,6 +564,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E309AEF027045020003B987E /* HeroListInteractorTest.swift in Sources */,
 				E3DE13F9270154EA00743ECF /* Hero_HubTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -21,22 +21,22 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="acR-Jh-L4i">
-                    <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="68"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="KsJ-sZ-skd"/>
+                        <constraint firstAttribute="height" constant="68" id="KsJ-sZ-skd"/>
                     </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Bnv-dz-pdS">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="8"/>
                     </collectionViewFlowLayout>
                 </collectionView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="o9H-L4-taq">
-                    <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                    <rect key="frame" x="0.0" y="128" width="414" height="734"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4IP-Gi-phA">
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="4IP-Gi-phA">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -51,7 +51,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="o9H-L4-taq" secondAttribute="trailing" id="WUL-bJ-eYd"/>
                 <constraint firstItem="acR-Jh-L4i" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="aLT-lT-mcE"/>
                 <constraint firstItem="o9H-L4-taq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="b27-ML-zPz"/>
-                <constraint firstItem="o9H-L4-taq" firstAttribute="top" secondItem="acR-Jh-L4i" secondAttribute="bottom" id="dPC-2h-4Rg"/>
+                <constraint firstItem="o9H-L4-taq" firstAttribute="top" secondItem="acR-Jh-L4i" secondAttribute="bottom" constant="16" id="dPC-2h-4Rg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="o9H-L4-taq" secondAttribute="bottom" id="nDQ-Mv-CPh"/>
                 <constraint firstItem="acR-Jh-L4i" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qcl-p5-fDy"/>
             </constraints>
