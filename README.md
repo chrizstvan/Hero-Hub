@@ -1,4 +1,4 @@
-# Tiket.com iOS Technical test
+# DOTA Hero Hub with VIP Pattern
 
 ### Libraries
 
